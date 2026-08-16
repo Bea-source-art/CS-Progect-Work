@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_fc55c604991b87c33622fa54a3240ec8 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iso8601-js-period@0.2.1/iso8601.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.control.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_fc55c604991b87c33622fa54a3240ec8" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_fc55c604991b87c33622fa54a3240ec8 = L.map(
+                "map_fc55c604991b87c33622fa54a3240ec8",
+                {
+                    center: [7.95, -1.02],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_de7cfb0bec581038ed30cb242c1e7856 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_de7cfb0bec581038ed30cb242c1e7856.addTo(map_fc55c604991b87c33622fa54a3240ec8);
+        
+    
+            L.Control.TimeDimensionCustom = L.Control.TimeDimension.extend({
+                _getDisplayDateFormat: function(date){
+                    var newdate = new moment(date);
+                    console.log(newdate)
+                    return newdate.format("YYYY-MM-DD HH:mm:ss");
+                }
+            });
+            map_fc55c604991b87c33622fa54a3240ec8.timeDimension = L.timeDimension(
+                {
+                    period: "P1Y",
+                }
+            );
+            var timeDimensionControl = new L.Control.TimeDimensionCustom(
+                {
+  "position": "bottomleft",
+  "minSpeed": 0.1,
+  "maxSpeed": 10,
+  "autoPlay": false,
+  "loopButton": false,
+  "timeSliderDragUpdate": false,
+  "speedSlider": true,
+  "playerOptions": {
+  "transitionTime": 200,
+  "loop": false,
+  "startOver": true,
+},
+}
+            );
+            map_fc55c604991b87c33622fa54a3240ec8.addControl(this.timeDimensionControl);
+
+            var geoJsonLayer = L.geoJson({"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [-1.7714, 4.9905]}, "properties": {"time": "1967-01-01", "popup": "Aboadze Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.8508, 9.4072]}, "properties": {"time": "1969-01-01", "popup": "Tamale Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.6218, 5.362]}, "properties": {"time": "1970-01-01", "popup": "Winneba Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.2413, 5.5691]}, "properties": {"time": "1970-01-01", "popup": "Kaneshie Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.2333, 11.0615]}, "properties": {"time": "1971-01-01", "popup": "Bawku Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-2.2381, 4.8747]}, "properties": {"time": "1974-01-01", "popup": "Axim Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.4535, 6.035]}, "properties": {"time": "1975-01-01", "popup": "Suhum Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-2.506, 10.0682]}, "properties": {"time": "1977-01-01", "popup": "Wa Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.0076, 9.4368]}, "properties": {"time": "1978-01-01", "popup": "Yendi Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.2971, 5.563]}, "properties": {"time": "1979-01-01", "popup": "Mallam Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [0.1061, 6.1597]}, "properties": {"time": "1980-01-01", "popup": "Kpong Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-4.3, 11.18]}, "properties": {"time": "1983-01-01", "popup": "Bobo-Dioulasso Hub", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-2.85, 5.2]}, "properties": {"time": "1984-01-01", "popup": "Elubo Border Station", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-1.6557, 6.2091]}, "properties": {"time": "1989-01-01", "popup": "Obuasi Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.75, 11.2]}, "properties": {"time": "1991-01-01", "popup": "Bolgatanga Interconnection", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-1.2411, 5.1068]}, "properties": {"time": "1992-01-01", "popup": "Cape Coast Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.8524, 10.7789]}, "properties": {"time": "1992-01-01", "popup": "Bolgatanga Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [2.43, 6.37]}, "properties": {"time": "1995-01-01", "popup": "Cotonou Transmission Hub", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [0.473, 6.6194]}, "properties": {"time": "1996-01-01", "popup": "Ho Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.0226, 5.6596]}, "properties": {"time": "1997-01-01", "popup": "Tema Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-1.2163, 6.6094]}, "properties": {"time": "1999-01-01", "popup": "Konongo Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-2.3318, 7.3375]}, "properties": {"time": "1999-01-01", "popup": "Sunyani Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-2.5946, 7.4443]}, "properties": {"time": "2000-01-01", "popup": "Berekum Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-1.7562, 4.9048]}, "properties": {"time": "2000-01-01", "popup": "Takoradi Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-1.497, 5.6984]}, "properties": {"time": "2000-01-01", "popup": "Assin Fosu Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [0.5762, 5.9995]}, "properties": {"time": "2000-01-01", "popup": "Sogakope Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.4124, 5.5262]}, "properties": {"time": "2003-01-01", "popup": "Kasoa Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-13.58, 9.64]}, "properties": {"time": "2004-01-01", "popup": "Conakry Transmission Hub", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.7749, 6.5502]}, "properties": {"time": "2005-01-01", "popup": "Nkawkaw Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-1.4716, 6.7128]}, "properties": {"time": "2007-01-01", "popup": "Ejisu Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-1.4029, 7.0553]}, "properties": {"time": "2007-01-01", "popup": "Mampong Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.2193, 5.6085]}, "properties": {"time": "2008-01-01", "popup": "Achimota Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.1799, 5.6401]}, "properties": {"time": "2009-01-01", "popup": "Legon Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-4.0, 5.35]}, "properties": {"time": "2010-01-01", "popup": "Abidjan Transmission Hub", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-1.9927, 5.3093]}, "properties": {"time": "2010-01-01", "popup": "Tarkwa Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.1439, 5.5921]}, "properties": {"time": "2011-01-01", "popup": "Aboadze Junction Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.254, 6.1017]}, "properties": {"time": "2014-01-01", "popup": "Koforidua Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [1.22, 6.13]}, "properties": {"time": "2014-01-01", "popup": "Lome Transmission Hub", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [1.19, 6.12]}, "properties": {"time": "2015-01-01", "popup": "Aflao Border Station", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-0.8265, 9.6264]}, "properties": {"time": "2015-01-01", "popup": "Savelugu Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [0.4766, 7.1436]}, "properties": {"time": "2017-01-01", "popup": "Hohoe Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-1.623, 6.6856]}, "properties": {"time": "2018-01-01", "popup": "Kumasi Central Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [0.0641, 6.2991]}, "properties": {"time": "2021-01-01", "popup": "Akosombo Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-1.9405, 7.5934]}, "properties": {"time": "2022-01-01", "popup": "Techiman Substation", "icon": "circle", "iconstyle": {"fillColor": "orange", "fillOpacity": 0.8, "stroke": "true", "radius": 6}}}]}, {
+                    pointToLayer: function (feature, latLng) {
+                        if (feature.properties.icon == 'marker') {
+                            if(feature.properties.iconstyle){
+                                return new L.Marker(latLng, {
+                                    icon: L.icon(feature.properties.iconstyle)});
+                            }
+                            //else
+                            return new L.Marker(latLng);
+                        }
+                        if (feature.properties.icon == 'circle') {
+                            if (feature.properties.iconstyle) {
+                                return new L.circleMarker(latLng, feature.properties.iconstyle)
+                                };
+                            //else
+                            return new L.circleMarker(latLng);
+                        }
+                        //else
+
+                        return new L.Marker(latLng);
+                    },
+                    style: function (feature) {
+                        return feature.properties.style;
+                    },
+                    onEachFeature: function(feature, layer) {
+                        if (feature.properties.popup) {
+                        layer.bindPopup(feature.properties.popup);
+                        }
+                        if (feature.properties.tooltip) {
+                        layer.bindTooltip(feature.properties.tooltip);
+                        }
+                    }
+                })
+
+            var timestamped_geo_json_e0de654639db036e5c108287d8bad8a9 = L.timeDimension.layer.geoJson(
+                geoJsonLayer,
+                {
+                    updateTimeDimension: true,
+                    addlastPoint: true,
+                    duration: undefined,
+                }
+            ).addTo(map_fc55c604991b87c33622fa54a3240ec8);
+        
+</script>
+</html>
